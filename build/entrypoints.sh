@@ -89,6 +89,11 @@ function install_language {
     install_language_lib
 }
 
+# Install tools to unpack binary
+function install_unpacker {
+    install upx
+}
+
 # Install each tools
 function install_tools {
     install_shell
@@ -97,6 +102,7 @@ function install_tools {
     install_arch
     install_debug
     install_language
+    install_unpacker
 }
 
 function setup_shell_plugins {
