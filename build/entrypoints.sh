@@ -61,12 +61,11 @@ function install_arch {
 }
 
 function install_debug_extensions {
-    #git clone https://github.com/longld/peda /opt/peda
-    #echo "source ~/peda/peda.py" >> ~/.gdbinit
-    git clone https://github.com/pwndbg/pwndbg.git $PATH_EXTENSIONS/pwndbg
-    
-    cd $PATH_EXTENSIONS/pwndbg/
-    $PATH_EXTENSIONS/pwndbg/setup.sh 2>&1 1>/dev/null
+    git clone https://github.com/longld/peda $PATH_EXTENSIONS/peda
+    echo "source $PATH_EXTENSIONS/peda/peda.py" >> ~/.gdbinit
+    #git clone https://github.com/pwndbg/pwndbg.git $PATH_EXTENSIONS/pwndbg
+    #cd $PATH_EXTENSIONS/pwndbg/
+    #$PATH_EXTENSIONS/pwndbg/setup.sh 2>&1 1>/dev/null
     cd /
 }
 
