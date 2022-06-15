@@ -57,7 +57,8 @@ function install_compiler {
 
 # Install tools to run binary for different architecture
 function install_arch {
-    install qemu-user qemu-user-static
+    install qemu-user qemu-user-static libc6-armhf-cross
+    ln -s /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 /usr/arm-linux-gnueabihf/lib/ld-linux.so.3
 }
 
 function install_debug_extensions {
@@ -118,6 +119,8 @@ function setup_shell_plugins {
 
     # Change plugins
     sed -i 's/plugins=(git)/plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)/g' $PATH_ZSHRC
+    
+    echo "alias qemu-arm='qemu-arm -L /usr/arm-linux-gnueabihf/'" >> $PATH_ZSHRC
 }
 
 # Setup shell configuration
