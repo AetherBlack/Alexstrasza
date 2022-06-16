@@ -18,4 +18,11 @@ if [ -n "$1" ]; then
     fi
 fi
 
-sudo docker run -it --rm --name alexstrasza --hostname alexstrasza --cap-add SYS_PTRACE --security-opt seccomp=unconfined -v $VOLUME:/share reverse:0.1
+# Check if the docker already exists
+sudo docker ps -a | grep alexstrasza 1>/dev/null
+
+if [ $? -eq 0 ]; then
+    sudo docker exec -it alexstrasza zsh
+else
+    sudo docker run -it --rm --name alexstrasza --hostname alexstrasza --cap-add SYS_PTRACE --security-opt seccomp=unconfined -v $VOLUME:/share reverse:0.1
+fi
